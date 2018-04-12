@@ -18,6 +18,7 @@
     "gulp": "^3.9.1",
     "gulp-archiver": "^1.0.0",
     "gulp-bump": "^2.9.0",
+    "gulp-env": "^0.4.0",
     "gulp-help": "^1.6.1",
     "gulp-if": "^2.0.2",
     "gulp-replace": "^0.6.1",
