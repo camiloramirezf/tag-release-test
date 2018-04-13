@@ -1,6 +1,6 @@
 {
   "name": "repo-play",
-  "version": "0.1.0",
+  "version": "0.1.1-dev",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@octokit/rest": "^15.2.6",
+    "concat-stream": "^1.6.2",
     "conventional-changelog-writer": "^3.0.9",
     "conventional-commits-filter": "^1.1.6",
     "conventional-commits-parser": "^2.1.7",

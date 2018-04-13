@@ -1,10 +1,14 @@
 const gulp = require('gulp-help')(require('gulp'));
 const parseSlug = require('parse-github-repo-url');
 const GitHubApi = require('@octokit/rest');
+const gutil = require('gulp-util');
 const localenv = require('gulp-env');
 const bump = require('gulp-bump');
 const fs = require('fs');
 const semver = require('semver');
+const moment = require('moment');
+const gitRawCommits = require('git-raw-commits');
+const concat = require('concat-stream');
 const conventionalCommitsParser = require('conventional-commits-parser');
 const conventionalCommitsFilter = require('conventional-commits-filter');
 const createReleaseChangelog = require('conventional-changelog-writer');
@@ -70,15 +74,18 @@ gulp.task('bump-version', ['set-env'], async (done) => {
 
         const commits = await parseCommitsSince(
             moment.utc(previousRelease.publishDate)
-          )
-          const bumpType = getBumpType(commits)
-      
-          const prevVersion = semver.parse(previousRelease.tagName)
-          const prevVersionString = `${prevVersion.major}.${prevVersion.minor}.${prevVersion.patch}`
-          const newVersionString =
-            semver.inc(prevVersionString, bumpType) + versionSuffix
-      
-          return gulp
+        );
+
+        console.log(commits);
+
+        const bumpType = getBumpType(commits)    
+        const prevVersion = semver.parse(previousRelease.tagName)
+        const prevVersionString = `${prevVersion.major}.${prevVersion.minor}.${prevVersion.patch}`
+        const newVersionString =
+        semver.inc(prevVersionString, bumpType) + versionSuffix
+        console.log(prevVersionString);
+        console.log(newVersionString);
+        return gulp
             .src('./package.json')
             .pipe(bump({ version: newVersionString, type: bumpType }))
             .pipe(gulp.dest('./'));
@@ -100,10 +107,7 @@ Example of a release
 async function getPreviousMatchingRelease (github) {
 
     // get latest release for dev-related branches because they don't have releases themselves.      
-    const lookupVersionSuffix =
-    TargetDeployConfig && TargetDeployConfig.env !== 'dev'
-      ? TargetDeployConfig.versionSuffix
-      : DeployConfig.prod.versionSuffix
+    const lookupVersionSuffix = '';    
     
     async function getMatchingRelease (options) {
       function getReleaseSuffix (tag) {
