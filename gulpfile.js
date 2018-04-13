@@ -44,7 +44,7 @@ gulp.task('set-env', () => {
     localenv({
         vars: {
             CURRENT_ENV: "dev",
-            GITHUB_PSW: "bd799c3cf2d752cbbdd91f55c0db4b8db81bf902"
+            GITHUB_PSW: "9366bd0d61a1f7cee96f715c37a2926c77aae491"
         }
     })
 })
