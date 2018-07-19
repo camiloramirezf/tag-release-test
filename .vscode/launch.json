@@ -1,0 +1,25 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Gulp debug",
+      "program": "${workspaceFolder}/node_modules/gulp/bin/gulp.js",
+      "args": ["post-zip"],
+      "cwd": "${workspaceFolder}",
+      "runtimeArgs": ["--nolazy"],
+      "console": "internalConsole",
+      "env": { "TAG_NAME": "rc-2018.07.03" }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/app.js"
+    }
+  ]
+}
